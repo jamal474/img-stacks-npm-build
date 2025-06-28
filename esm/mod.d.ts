@@ -43,6 +43,8 @@ export type StackSizeConfig = FixedSizeConfig | AspectRatioConfig;
 export interface ImgStackProps {
     /** Array of images to display in the stack */
     images: StackImage[];
+    /** Subject of the image group */
+    subject?: string;
     /** Optional CSS class name */
     className?: string;
     /**
@@ -51,4 +53,4 @@ export interface ImgStackProps {
      */
     size?: StackSizeConfig;
 }
-export declare function ImgStack({ images, className, size }: ImgStackProps): React.JSX.Element;
+export declare function ImgStack({ images, subject, className, size }: ImgStackProps): React.JSX.Element;

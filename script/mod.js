@@ -56,7 +56,7 @@ function getAspectRatio(size) {
     const { width, height } = ASPECT_RATIOS[size.ratio];
     return `${width}/${height}`;
 }
-function ImgStack({ images, className = "", size }) {
+function ImgStack({ images, subject = "Project", className = "", size }) {
     const [dialogOpen, setDialogOpen] = react_1.default.useState(false);
     const [animatedStacks, setAnimatedStacks] = react_1.default.useState([]);
     const [isHovered, setIsHovered] = react_1.default.useState(false);
@@ -158,8 +158,8 @@ function ImgStack({ images, className = "", size }) {
     }, [dialogOpen]);
     const imagesLength = images.length;
     const btnLabel = imagesLength === 1
-        ? "View 1 project image"
-        : `View ${imagesLength} project images`;
+        ? `View 1 ${subject} image`
+        : `View ${imagesLength} ${subject} images`;
     return (react_1.default.createElement("div", { style: { ...dimensions, position: "relative" } },
         react_1.default.createElement("button", { ref: (el) => {
                 stackRef.current = el;
@@ -188,7 +188,9 @@ function ImgStack({ images, className = "", size }) {
             } },
             react_1.default.createElement("div", { className: "dialog-content" },
                 react_1.default.createElement("header", { className: "dialog-header" },
-                    react_1.default.createElement("h2", { className: "dialog-title" }, "Project Images"),
+                    react_1.default.createElement("h2", { className: "dialog-title" },
+                        subject,
+                        " Images"),
                     react_1.default.createElement("button", { className: "dialog-close", onClick: () => setDialogOpen(false), "aria-label": "Close dialog" }, "\u00D7")),
                 react_1.default.createElement("div", { className: "dialog-body" }, images.map((image, i) => (react_1.default.createElement("figure", { key: i },
                     react_1.default.createElement("img", { src: image.src, alt: image.alt, style: aspectRatio ? { aspectRatio } : undefined }),

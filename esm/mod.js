@@ -50,7 +50,7 @@ function getAspectRatio(size) {
     const { width, height } = ASPECT_RATIOS[size.ratio];
     return `${width}/${height}`;
 }
-export function ImgStack({ images, className = "", size }) {
+export function ImgStack({ images, subject = "Project", className = "", size }) {
     const [dialogOpen, setDialogOpen] = React.useState(false);
     const [animatedStacks, setAnimatedStacks] = React.useState([]);
     const [isHovered, setIsHovered] = React.useState(false);
@@ -152,8 +152,8 @@ export function ImgStack({ images, className = "", size }) {
     }, [dialogOpen]);
     const imagesLength = images.length;
     const btnLabel = imagesLength === 1
-        ? "View 1 project image"
-        : `View ${imagesLength} project images`;
+        ? `View 1 ${subject} image`
+        : `View ${imagesLength} ${subject} images`;
     return (React.createElement("div", { style: { ...dimensions, position: "relative" } },
         React.createElement("button", { ref: (el) => {
                 stackRef.current = el;
@@ -182,7 +182,9 @@ export function ImgStack({ images, className = "", size }) {
             } },
             React.createElement("div", { className: "dialog-content" },
                 React.createElement("header", { className: "dialog-header" },
-                    React.createElement("h2", { className: "dialog-title" }, "Project Images"),
+                    React.createElement("h2", { className: "dialog-title" },
+                        subject,
+                        " Images"),
                     React.createElement("button", { className: "dialog-close", onClick: () => setDialogOpen(false), "aria-label": "Close dialog" }, "\u00D7")),
                 React.createElement("div", { className: "dialog-body" }, images.map((image, i) => (React.createElement("figure", { key: i },
                     React.createElement("img", { src: image.src, alt: image.alt, style: aspectRatio ? { aspectRatio } : undefined }),
