@@ -160,7 +160,7 @@ function ImgStack({ images, subject = "Project", className = "", size }) {
     const btnLabel = imagesLength === 1
         ? `View 1 ${subject} image`
         : `View ${imagesLength} ${subject} images`;
-    return (react_1.default.createElement("div", { style: { ...dimensions, position: "relative" } },
+    return (react_1.default.createElement("div", { className: "img-stack-root", style: { ...dimensions, position: "relative" } },
         react_1.default.createElement("button", { ref: (el) => {
                 stackRef.current = el;
                 buttonRefs.current[0] = el;
