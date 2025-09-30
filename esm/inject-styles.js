@@ -5,6 +5,6 @@ export function injectStyles() {
         return;
     const styleElement = document.createElement("style");
     styleElement.textContent = styles;
-    document.head.appendChild(styleElement);
+    document.head.prepend(styleElement);
     stylesInjected = true;
 }

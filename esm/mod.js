@@ -187,6 +187,6 @@ export function ImgStack({ images, subject = "Project", className = "", size }) 
                         " Images"),
                     React.createElement("button", { className: "dialog-close", onClick: () => setDialogOpen(false), "aria-label": "Close dialog" }, "\u00D7")),
                 React.createElement("div", { className: "dialog-body" }, images.map((image, i) => (React.createElement("figure", { key: i },
-                    React.createElement("img", { src: image.src, alt: image.alt, style: aspectRatio ? { aspectRatio } : undefined }),
+                    React.createElement("img", { src: image.src, alt: image.alt, style: image.aspectRatio ? { aspectRatio: image.aspectRatio } : (aspectRatio ? { aspectRatio } : undefined) }),
                     React.createElement("figcaption", null, image.caption)))))))));
 }

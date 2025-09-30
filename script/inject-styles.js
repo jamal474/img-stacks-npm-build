@@ -8,7 +8,7 @@ function injectStyles() {
         return;
     const styleElement = document.createElement("style");
     styleElement.textContent = styles_js_1.styles;
-    document.head.appendChild(styleElement);
+    document.head.prepend(styleElement);
     stylesInjected = true;
 }
 exports.injectStyles = injectStyles;
